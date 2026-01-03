@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Heart of the Woods</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Heart of the Woods</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-7/11/2025">7/11/2025</a> 15:50:50</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-12/21/2025">12/21/2025</a> 12:30:58</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-2/15/2019">2/15/2019</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-70">70</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Visual Novel">Visual Novel</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Studio Élan">Studio Élan</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Denpasoft">Denpasoft</a><br/><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Sekai Games">Sekai Games</a><br/><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Sekai Project">Sekai Project</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/844660" target="_blank">Steam</a><br/><a href="https://www.gog.com/game/heart_of_the_woods" target="_blank">GOG</a><br/><a href="https://vnstudioelan.com/games/heart-of-the-woods/" target="_blank">Official</a><br/><a href="https://vnstudioelan.itch.io/heart-of-the-woods" target="_blank">Itch</a><br/><a href="https://twitter.com/vnstudioelan" target="_blank">Twitter</a><br/><a href="https://www.twitch.tv/directory/game/Heart%20of%20the%20Woods" target="_blank">Twitch</a><br/><a href="https://www.nintendo.com/games/detail/heart-of-the-woods-switch/" target="_blank">Uknown</a><br/><a href="https://store.playstation.com/en-us/concept/10002674" target="_blank">Uknown</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/844660/extras/synopsis.png?t=1733112624" /></div><br><br><i>Heart of the Woods</i> is a fantasy yuri visual novel about paranormal investigation, ancient mysteries, and a love between two girls that transcends life and death.<br><br>Maddie Raines has had enough. After years of serving as manager, editor, and general business-handler for her best friend Tara's popular paranormal vlog channel, she's finally ready to move forward with her own life.  But when she agrees to take one last trip with Tara to the mysterious village of Eysenfeld, she's suddenly swept up in a dangerous supernatural crisis that will change the course of both of their lives forever. A strange young woman named Morgan has promised them undeniable proof of real paranormal phenomena, and what she has to offer eclipses anything they’d ever seen before.<br><br>However, out of all the strange occurrences the three of them bear witness to, one in particular captivates Maddie in a way she’s never been before: the ghost of a young woman. This woman is Abigail, the victim of a centuries-old injustice now bound eternally to the forest surrounding Eysenfeld. Drawn to Maddie in a way she can’t explain, Abigail reveals herself to another person for the first time in more than 200 years.<br><br>While Tara and Morgan investigate the mysteries surrounding the village itself, Maddie begins to form a bond with Abigail that grows to be more intense than any bond she’s felt before. As she learns the truth about Abigail’s death and imprisonment, she realizes that it falls to her and her friends to break the curse that has ruled over Eysenfeld for centuries. But more importantly than that, it falls to her to finally free the woman she loves.<br><br><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/844660/extras/characters_header.png?t=1733112624" /></div><br><br><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/844660/extras/maddie_header.png?t=1733112624" /></div><br><br>A part-time manager, part time video editor, and full-time babysitter, Maddie has the thankless job of handling the absolute whirlwind that is her best friend.<br><br>She’s professional, meticulous and intellectual; the first person to turn to when a problem needs solving. But when their investigation entangles her in an ancient curse, she's forced to confront phenomena beyond her comprehension, and more importantly, her own self doubt.<br><br><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/844660/extras/abigail_header.png?t=1733112624" /></div><br><br>For the last two centuries, the ghost of a young woman has haunted the forests of Eysenfeld. That ghost is Abigail, a kind and playful soul forcibly bound to the forest as part of an ancient curse. <br><br>Two hundred years of wishing for a life cruelly denied to her have led to a feeling of crushing loneliness and one overwhelming desire: to finally have someone to talk to.<br><br><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/844660/extras/tara_header.png?t=1733112624" /></div><br><br>One of the world’s most popular paranormal vloggers (according to her), Tara is unfailingly charismatic and bursting with limitless energy. She’s brash, intrepid, and always seeking something new. That often makes her a magnet for trouble: whether it’s from relentless flirting, minor criminal activities or just plain pig-headedness, things around Tara have a tendency to end in chaos.<br><br><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/844660/extras/morgan_header.png?t=1733112624" /></div><br><br>A loyal Taranormal viewer and the daughter of Eysenfeld’s mayor, Morgan is… different. When not running her small and mostly empty antique shop, she’s known to disappear into the woods for days at a time. That, combined with her resistance to traditional social standards, has caused her to develop a bit of a notorious reputation in the village.<br><br>However, this resistance is not just an act of rebellion: Morgan knows that there’s something sinister deep within Eysenfeld, and she’s not going to stop until she tears it out at the roots.<br><br><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/844660/extras/features_header.png?t=1733112624" /></div><br><ul class="bb_ul"><li> Incredible character and CG art from Rosuuri<br></li><li> Full English voice acting<br></li><li> Approximately 130,000 words with multiple endings<br></li><li> Fully original backgrounds and soundtrack<br></li><li> Ending theme from In Love With A Ghost<br></li><li> Multiple accessibility options<br></li><li> F​ully translated to Traditional Chinese (繁體中文), Simplified Chinese (简体中文), German (Deutsch), and Spanish (Español)<br></li><li> Steam trading cards<br></li><li> Extra features including a music room, CG viewer, and guest art gallery<br></li><li> At least one really, really gay ghost</li></ul><br><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/844660/extras/hotw_cast.png?t=1733112624" /></div><br>Maddie Raines - Allie Goodell<br>Abigail - Heidi Tabing<br>Tara Bryck - Stephanie &quot;Teffi&quot; Arata<br>Morgan Fischer - Kira Buckland<br>Evelyn Fischer - Tara Langella<br>Fairy Queen - Emaline Tuck<br>Fairies - Anairis Quinones, Lisa Reimold, Tina Kim
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

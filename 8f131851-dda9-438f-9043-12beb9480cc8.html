@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Sephonie</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Sephonie</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-7/11/2025">7/11/2025</a> 15:50:51</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-12/21/2025">12/21/2025</a> 12:30:58</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-4/12/2022">4/12/2022</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Platform">Platform</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Puzzle">Puzzle</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Analgesic Productions">Analgesic Productions</a><br/><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Marina Kittaka">Marina Kittaka</a><br/><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Melos Han-Tani">Melos Han-Tani</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Analgesic Productions">Analgesic Productions</a><br/><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Ratalaika Games">Ratalaika Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/1248840" target="_blank">Steam</a><br/><a href="https://discord.gg/analgesic" target="_blank">Discord</a><br/><a href="https://www.gog.com/game/sephonie" target="_blank">GOG</a><br/><a href="https://han-tani.itch.io/sephonie" target="_blank">Itch</a><br/><a href="https://analgesic.productions/press/sephonie/index.html" target="_blank">Official</a><br/><a href="http://twitter.com/han_tani" target="_blank">Twitter</a><br/><a href="https://www.youtube.com/c/ANALGESICPRODUCTIONS" target="_blank">YouTube</a><br/><a href="https://store.epicgames.com/p/sephonie-6ab6f7" target="_blank">Epic</a><br/><a href="https://www.twitch.tv/directory/game/Sephonie" target="_blank">Twitch</a><br/><a href="https://store.playstation.com/en-us/concept/10008002" target="_blank">Uknown</a><br/><a href="https://www.nintendo.com/store/products/sephonie-switch/" target="_blank">Uknown</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					In this 3D adventure, parkour through an uninhabited island's massive cave network. You'll take on challenges in lush caverns, subterranean oceans, and surreal cityscapes as you guide three biologists through the shifting spiritual landscape of the island depths!<br><br><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1248840/extras/red.png?t=1745451740" /></div><h2 class="bb_tag">Parkour-esque movement</h2><br>Use an acrobatic moveset to navigate lush, jade canopies and rusty sandstone spires. Fling yourself over high ledges using the satisfying Teledash Vault and deftly Wallrun across dangerous outcroppings.<br><br><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1248840/extras/wallrun.gif?t=1745451740" /></div><br><br>Grapple through the air with the help of long-tongued Ribbats or climb tall cliffs via sticky-ridged Gripshrooms. Linking with certain creatures will grant you new abilities to reach the farthest depths of the island.<h2 class="bb_tag">The Relaxing and Casual Puzzle Grid System</h2><br>Research the island's unknown creatures by Linking with them! Using the one-of-a-kind &quot;Puzzle Grid&quot; system, overcome each creature's challenges by freely placing a series of colored tiles, forming large islands of one color.<br><br><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1248840/extras/linking.gif?t=1745451740" /></div><br><br><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1248840/extras/green.png?t=1745451740" /></div><h2 class="bb_tag">A Research Trip Gone Awry</h2><br>In the near future, three biologists are on a joint mission to use their state-of-the-art ONYX implants to research the creatures of the uninhabited Sephonie Island. But as they approach the island, a sudden storm leaves them shipwrecked.<br><br>Amy Lim, Taiwanese-American and bold leader, hails from the midwestern USA town of Bloomington. Riyou Hayashi, an analytically-minded Japanese-Taiwanese researcher, calls the bustling Tokyo his home. And Ing-wen Lin, a kind and considerate Taiwanese scientist, lives in Taipei.<br><br>The trio will find their motivations and loyalties put to the test as they navigate Sephonie’s caverns, facing not only physical challenges but also their deepest memories and dreams. As they grow more intimate with each other and the island, an ancient force, brewing deep in the island's abyss, may threaten their newfound relationship, and the world...<br><br><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1248840/extras/blue.png?t=1745451740" /></div><h2 class="bb_tag">Features</h2><br><ul class="bb_ul"><li>Master a parkour-esque moveset to sprint, wallrun, jump, and fling yourself through Sephonie Island’s rocky and physical caverns!<br></li><li>A beautiful and varied cave system filled with all manner of large and surprising creatures.<br></li><li>A deep, emotional story about the close bonds of a trio, the priorities of nations, and the delicate connection of humans and nature.<br></li><li>A screenshot mode that lets you pose the characters and creatures you meet in the game, and then take fun photos!<br></li><li>The postgame “Bubble Adventure” and fiendish hidden items provide a fun challenge for advanced spelunkers.<br></li><li>A human experience crafted entirely by the IGF Grand Prize-nominated duo of Marina Kittaka and Melos Han-Tani, behind works such as Anodyne 1 &amp; 2, Even the Ocean, and All Our Asias.</li></ul><br><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1248840/extras/discord.png?t=1745451740" /></div><br>Join us on Discord to chat about the game! (Link on the sidebar). Or, join our newsletter to stay up to date on the game's news! (Link also on the sidebar!)<br><br>---<br><br>Sephonie does not support square resolutions (Less wide than 16:10). Sephonie will run fine with these resolutions but some UI may be cut off, which you can fix by using the in-game UI Scaling option or by running the game in a 16:9/16:10 windowed resolution.<br>The same goes for UWHD resolutions in fullscreen.<br><br>Sephonie only officially and natively supports certain controllers (PS4/5, XB1/XB360). Other controllers may work with Steam Input, but functionality not guaranteed. In particular the Nintendo Switch Pro Controller is NOT supported although players have gotten it working. See forum for details.<br><br>Sephonie has been tested to work on Linux with Proton, although there may be some lighting errors depending on your OS so we have chosen to not have an officially supported Linux version.
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

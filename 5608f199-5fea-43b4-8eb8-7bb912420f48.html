@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Hyper Gunsport</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Hyper Gunsport</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-7/11/2025">7/11/2025</a> 15:50:51</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-12/21/2025">12/21/2025</a> 12:30:59</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-12/22/2022">12/22/2022</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-80">80</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Arcade">Arcade</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Sport">Sport</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Necrosoft Games">Necrosoft Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Necrosoft Games">Necrosoft Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Co-Operative">Co-Operative</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Multiplayer">Multiplayer</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/1663250" target="_blank">Steam</a><br/><a href="https://www.twitch.tv/directory/game/Hyper%20Gunsport" target="_blank">Twitch</a><br/><a href="https://necrosoftgames.itch.io/hypergunsport" target="_blank">Itch</a><br/><a href="https://gunsport.tv/" target="_blank">Official</a><br/><a href="https://www.youtube.com/@necrosoftgames" target="_blank">YouTube</a><br/><a href="https://twitter.com/necrosoftgames" target="_blank">Twitter</a><br/><a href="https://discord.gg/necrosoftgames" target="_blank">Discord</a><br/><a href="https://www.nintendo.com/store/products/hyper-gunsport-switch/" target="_blank">Uknown</a><br/><a href="https://store.playstation.com/en-us/concept/10005140" target="_blank">Uknown</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1663250/extras/textheaders_thegame.png?t=1739230129" /></div> <br><strong><i>Hyper Gunsport</i></strong> is all about arcade action! Precision shooting and tight jumps! Clutch saves and epic slams! But the ONLY thing you can shoot is the ball!<br><br>At its core, Hyper Gunsport is a cooperatively competitive action game where the object is to shoot the ball into goals of varying difficulty, while the opposing team tries to do the same. Each time the ball crosses the net its point value goes up, so longer volleys mean bigger points and higher stakes. <br><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1663250/extras/battle.gif?t=1739230129" /></div><br>A team is composed of two positions, a keeper and a striker. The keeper doesn't move, but can fire more frequently, and has a wider aiming range and shot radius - they're often used as defense. The striker can move and jump, but can take fewer shots, so they must be precise and must make them count. Will you burn shots and get aggressive, or set up an iron defense instead? The game encourages teamwork and competition by equal measures. <br><br>Each team also has its own special weapons which unlock with proficient play. These weapons require players to think on their feet and change the shape of the game. Tricky bounces, shots that detonate, different strategies abound. <br><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1663250/extras/HG.gif?t=1739230129" /></div><br>Each arena is unique as well, with its own gimmicks, from goals that open and close or change point values, to moving nets, to unstable footing. If you've played games like <i>Windjammers</i>, <i>Sportsfriends</i>, <i>IDARB</i>, or <i>Towerfall</i>, you'll be in familiar territory.<br><br>Ultimately, Hyper Gunsport rewards precision shooting for the hardcore minded, but is also friendly to new players who just want to have a good time. The depth is there if you want it! <br><br><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1663250/extras/textheaders_theteams.png?t=1739230129" /></div> <br><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1663250/extras/characterlineup.gif?t=1739230129" /></div><br><strong>People's Republic of Oakland</strong><br>This team is new to the game and has a lot to prove. Special attacks include a short range spherical blast that hangs in the air, and a shot that can bounce once before impact.<br><br><strong>Neo Tokyo</strong><br>A venerable team with custom-made weapons. Their special attacks include a chargeable buster shot and an extended shotgun blast.<br><br><strong>New Republic of Congo</strong><br>Lords of the court. Special attacks include a custom yo-yo that hits the ball coming and going, and an assault rifle.<br><br><strong>United Worker's Socialist Democracy</strong><br>Super cybernetically enhanced team from the eastern bloc. Specials include a long laser for angled shots, and cannon fire that keeps pushing on impact.<br><br><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1663250/extras/teamicons.png?t=1739230129" /></div><br><br><strong>Blue Cambodia</strong><br>The oldest team on the pitch, who use no cybernetics. Their specials include a double arced arrow shot and an independent detonation mortar.<br><br><strong>Scrapyard Squad</strong><br>They sneaked in here on faked credentials with questionable weapons. Specials include a laser bat attack and a chain that extends the length of the field.<br><br><strong>Practicebots Alliance</strong><br>Recently gained sentience. Can use the specials of any other team, but at random! You never know what you'll get.<br><br><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1663250/extras/characterselection_opt.gif?t=1739230129" /></div><br><br><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1663250/extras/textheaders_thelore.png?t=1739230129" /></div> <br>There is no more war. There are no more gods. There is only the game. <br><br>Hyper Gunsport is set in a future where humans have grown tired of conflict, and all weaponry is banned. Disputes between countries are now settled with The World's Game: Gunsport. Guns are now only used for one thing, and that's to shoot a ball into a goal. Guns that can do harm no longer exist.<br><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1663250/extras/newsdesk.png?t=1739230129" /></div><br>Neon lights and repurposed technology populate this world, filling it with a restless analog hum. Each country participating in the tourney brings different motivations for doing so. Some want to build a base on the moon, some want new trade routes, others want to establish primacy. Inter-team dramas occasionally bubble to a head but the game at least deserves their respect. For the passion and the fame - it's two guns against the world!<br><br><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1663250/extras/textheaders_thefeatures.png?t=1739230129" /></div> <br>- <strong>Circuit mode</strong>: an 8-round tournament against teams from around the globe, with a short story for each of the 7 teams. Playable in local co-op or single player with an AI partner.<br>- <strong>Versus mode</strong>: 4 player 2v2 or 1v1 local competitive play.<br>- <strong>AI tournament</strong>: let the AI battle itself, wind it up and watch it go.<br>- <strong>7 arenas</strong> with unique gimmicks and rulesets that change how the game is played<br><br><br><i>(Note: Hyper Gunsport is the sequel to the original Gunsport in the sense that Super Street Fighter II Turbo is the sequel to Street Fighter II.)</i>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Final Profit: A Shop RPG</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Final Profit: A Shop RPG</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-7/11/2025">7/11/2025</a> 15:50:51</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-12/21/2025">12/21/2025</a> 12:30:59</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-3/6/2023">3/6/2023</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Simulator">Simulator</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://twitter.com/FinalProfitRPG" target="_blank">Twitter</a><br/><a href="https://discord.gg/VX7M58RfJn" target="_blank">Discord</a><br/><a href="https://store.steampowered.com/app/1705140" target="_blank">Steam</a><br/><a href="https://www.finalprofit.com.au/" target="_blank">Official</a><br/><a href="https://www.reddit.com/r/FinalProfit" target="_blank">Reddit</a><br/><a href="https://www.twitch.tv/directory/game/Final%20Profit:%20A%20Shop%20RPG" target="_blank">Twitch</a><br/><a href="https://www.facebook.com/finalprofit" target="_blank">Facebook</a><br/><a href="https://www.youtube.com/@ManaBrent" target="_blank">YouTube</a><br/><a href="https://finalprofit.wiki.gg/wiki/Final_Profit_Wiki" target="_blank">Wikia</a><br/><a href="https://bsky.app/profile/finalprofit.bsky.social" target="_blank">Bluesky</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<p class="bb_paragraph"><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1705140/extras/SteamDiscordBanner2.png?t=1749501778" /></div></p><p class="bb_paragraph"><i>FINAL PROFIT is a story driven management <strong>shop-sim RPG hybrid</strong></i> with depth and density that will take you to unexpected places as it gradually unfolds and evolves.</p><ul class="bb_ul"><li><p class="bb_paragraph"><i>(As of the 1.2.3 update, <strong>now also includes Just Shop Mode</strong>! An alternate roguelike shop keeping game mode!)</i></p></li></ul><p class="bb_paragraph">With over 30 original songs and 35+ hours of gameplay.</p><p class="bb_paragraph"></p><p class="bb_paragraph"><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1705140/extras/Features.png?t=1749501778" /></div></p><h2 class="bb_tag"><strong>Your Fortune, Your Way</strong></h2><ul class="bb_ul"><li><p class="bb_paragraph">Gather products and find customers.</p></li><li><p class="bb_paragraph">Invest in stocks, commodities, and real estate.</p></li><li><p class="bb_paragraph">Almost <i>every building in the game can be purchased</i>, adding to your passive income.</p></li></ul><p class="bb_paragraph"></p><p class="bb_paragraph"><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1705140/extras/RunYourShop03.gif?t=1749501778" /></div></p><h2 class="bb_tag"><strong>Choices and Consequences</strong></h2><ul class="bb_ul"><li><p class="bb_paragraph">Many decisions lead to branching outcomes that change shop systems, customer behavior, and product interactions. With both short and long term effects.</p></li><li><p class="bb_paragraph">Deep upgrades that interconnect.</p></li><li><p class="bb_paragraph">Master a system, then automate it.</p></li></ul><p class="bb_paragraph"></p><p class="bb_paragraph"><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1705140/extras/makechoices2.gif?t=1749501778" /></div></p><h2 class="bb_tag"><strong>Rewarding Exploration</strong></h2><ul class="bb_ul"><li><p class="bb_paragraph">Learn spells that interact with the world.</p></li><li><p class="bb_paragraph">Discover puzzles, minigames, collectables, and rich lore.</p></li><li><p class="bb_paragraph"><i>Secrets around every corner.</i></p></li></ul><p class="bb_paragraph"></p><p class="bb_paragraph"><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1705140/extras/explore.gif?t=1749501778" /></div></p><h2 class="bb_tag"><strong>Get Sidetracked: The Game</strong></h2><p class="bb_paragraph"><i>“I’ve sold all my stock and made a tidy profit! Time to head out and pick up some more, but wait… There was that customer I wanted to find… And that area that was blocked off, I just learned the spell to open it up! And I’ve saved up enough for an upgrade, but which one to get first? Oh! Is that a chest I missed? Now I have enough Apples to venture deeper into the Apple Labyrinth! (Just remember to pick up that stock on the way back!)”</i></p><p class="bb_paragraph"></p><p class="bb_paragraph"><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1705140/extras/Story.png?t=1749501778" /></div></p><h2 class="bb_tag"><strong>Play as the fierce former Queen of the Fae</strong></h2><p class="bb_paragraph">Exiled by your own daughter because of your radical plan to save the realm from financial predators by beating them at their own game.</p><p class="bb_paragraph"></p><p class="bb_paragraph">The Fae Council thinks you have no chance of taking down the Bureau of Business.</p><p class="bb_paragraph"></p><p class="bb_paragraph"><i>Prove them wrong.</i></p><p class="bb_paragraph"></p><p class="bb_paragraph"><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1705140/extras/story600a.gif?t=1749501778" /></div></p><p class="bb_paragraph"><strong>Starting with nothing</strong></p><p class="bb_paragraph">Without the support of your kingdom you’ll enter the world of business and try to carry out your plan. <i>Build your fortune until you become a Lord of Business!</i></p><p class="bb_paragraph"></p><p class="bb_paragraph"><strong>But you'll need more than just money</strong></p><p class="bb_paragraph">Seek out allies to help overcome the danger, traps, and colossal debt the Bureau has in store for you. There’s bound to be others who wish to change the status quo.</p><p class="bb_paragraph"></p><p class="bb_paragraph"><strong>From simple beginnings in a small town</strong></p><p class="bb_paragraph">Learn the ropes in a little shop while getting introduced to the world and characters. Once you get the hang of things you’ll be ready to move to a bigger city and tackle more complex problems. Keep growing your fortune and influence until you reach your goal!</p><p class="bb_paragraph"></p><h2 class="bb_tag"><strong>Confronting Capitalism</strong></h2><ul class="bb_ul"><li><p class="bb_paragraph">Will you emerge with your morals intact and save your people?</p></li><li><p class="bb_paragraph">Or will you compromise and become a ruthless agent of the system you swore to dismantle?</p></li></ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

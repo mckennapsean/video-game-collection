@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>SCP: 5K (Alpha Testing)</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> SCP: 5K (Alpha Testing)</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-7/11/2025">7/11/2025</a> 15:50:50</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-12/21/2025">12/21/2025</a> 12:30:58</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-2/22/2022">2/22/2022</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-74">74</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Shooter">Shooter</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Tactical">Tactical</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Affray Interactive">Affray Interactive</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Affray Interactive">Affray Interactive</a><br/><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-SCP.GAMES">SCP.GAMES</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Co-Operative">Co-Operative</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Multiplayer">Multiplayer</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://www.youtube.com/channel/UCTAm_QdmKJvkQHo82dF9OJA" target="_blank">YouTube</a><br/><a href="https://store.steampowered.com/app/872670/SCP_5K/" target="_blank">Steam</a><br/><a href="https://scp5k.gg/" target="_blank">Official</a><br/><a href="https://www.twitch.tv/directory/game/SCP%3A%205K" target="_blank">Twitch</a><br/><a href="https://twitter.com/affrayco" target="_blank">Twitter</a><br/><a href="https://reddit.com/r/SCP5K" target="_blank">Reddit</a><br/><a href="https://discord.gg/scpgames" target="_blank">Discord</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<p class="bb_paragraph">The SCP Foundation has gone dark. Disturbing intel from one of the many Foundation sites, Area-12, an underground biological research and containment facility in West Virginia, has been forwarded to an anomalous branch of the FBI, the Unusual Incidents Unit (UIU).</p><p class="bb_paragraph">Upon arrival the UIU are ambushed and trapped within Area-12 by a facility wide lock-down, leaving you alone and without backup. For reasons yet unclear, Area-12 has adopted a new agenda: creating weaponized hybrids of anomalous creatures. Now the UIU must get to the bottom of “why” and stop them before these monstrosities are unleashed on innocent civilians.</p><p class="bb_paragraph">  </p><p class="bb_paragraph"><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/872670/extras/Steam_Title_Banner_01.png?t=1741676893" /></div></p><p class="bb_paragraph"><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/872670/extras/Combat3.gif?t=1741676893" /></div></p><p class="bb_paragraph">Anomalies are reality-defying objects, artifacts and creatures that inhabit the cracks in our world. These anomalies are what the SCP Foundation was supposed to contain; and their anomalous nature makes them dangerous to the likes of you. </p><ul class="bb_ul"><li><p class="bb_paragraph">SCP-173-B // The Sculpture</p></li><li><p class="bb_paragraph">SCP-610 // The Flesh that Hates</p></li><li><p class="bb_paragraph">SCP-7528 // Screen Anomaly</p></li><li><p class="bb_paragraph">SCP-1262 // Seed of Destruction</p></li><li><p class="bb_paragraph">SCP-3199 // Humans Refuted</p></li><li><p class="bb_paragraph">SCP-621 // Hypnobulbs </p></li><li><p class="bb_paragraph">SCP-098 // Surgeon Crabs </p></li><li><p class="bb_paragraph">SCP-7566 // Door Squid</p><p class="bb_paragraph"> </p></li></ul><p class="bb_paragraph">Within Area-12, there are reports of the Foundation experimenting with hybrid anomalies; brutal SCP combinations, bred for ultimate destruction.</p><ul class="bb_ul"><li><p class="bb_paragraph">Vx-026 // Infector</p></li><li><p class="bb_paragraph">Vx-349 // Resonator</p></li></ul><p class="bb_paragraph"></p><h2 class="bb_tag"><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/872670/extras/Steam_Title_Banner_02.png?t=1741676893" /></div></h2><ul class="bb_ul"><li><p class="bb_paragraph"><strong>Raid on Area-12</strong> // UIU Operatives infiltrate Area-12, West Virginia, which is at the center of disturbing events surrounding the SCP Foundation // 4-6 players </p></li></ul><ul class="bb_ul"><li><p class="bb_paragraph"><strong>Ghosts of the South Gate</strong> // GOC Investigate a remote research outpost, NSIS-4, Antarctica after receiving intel from UIU operatives at Area-12 about development of a 'biological weapon' // 4-6 players </p></li></ul><h2 class="bb_tag"><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/872670/extras/Steam_Title_Banner_03.png?t=1741676893" /></div></h2><p class="bb_paragraph"></p><ul class="bb_ul"><li><p class="bb_paragraph">Raid on Outpost Axiom // 1-8 players</p></li><li><p class="bb_paragraph">Outpost Axiom PvP // 2-16 players</p></li><li><p class="bb_paragraph">Wave Survival Testing // 1-8 players</p></li><li><p class="bb_paragraph">Weapons Testing // 1-6 players</p></li><li><p class="bb_paragraph">PvP Testing // 4-14 players</p></li></ul><h2 class="bb_tag"><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/872670/extras/Steam_Title_Banner_04.png?t=1741676893" /></div></h2><ul class="bb_ul"><li><p class="bb_paragraph"><strong>Tactical Gunplay</strong> // Grounded tactical combat utilizing vaulting, peeking corners, breaching doors, and detailed weapon customization</p></li><li><p class="bb_paragraph"><strong>Investigation</strong> // Observe your surroundings to look for clues that will help you complete your objectives and find valuable resources or additional intel</p></li><li><p class="bb_paragraph"><strong>Lore + Reporting</strong> // Take in as much or as little lore as you like by not only choosing what documents and audio logs you are collecting and observing with your tablet, but also what you find interesting enough to report over radio to your ToC</p></li><li><p class="bb_paragraph"><strong>Immersive Audio</strong> // Detailed audio design with occlusion-based wall muffling and spatialized/proximity voice chat</p></li></ul><p class="bb_paragraph"></p><h2 class="bb_tag"><div class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/872670/extras/Steam_Title_Banner_05.png?t=1741676893" /></div></h2><ul class="bb_ul"><li><p class="bb_paragraph">Take advantage of NVIDIA® DLSS, NVIDIA® NIS, and AMD® FidelityFX Super Resolution (FSR) for enhanced visual performance.</p></li><li><p class="bb_paragraph">Ultra-wide support for an immersive gaming experience.</p></li></ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
